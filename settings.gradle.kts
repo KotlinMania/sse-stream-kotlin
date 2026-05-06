@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "sse-stream-kotlin"
+
