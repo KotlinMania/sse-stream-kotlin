@@ -10,7 +10,7 @@ import org.jetbrains.kotlin.gradle.targets.wasm.yarn.WasmYarnRootEnvSpec
 plugins {
     kotlin("multiplatform") version "2.3.21"
     kotlin("plugin.serialization") version "2.3.21"
-    id("com.android.kotlin.multiplatform.library") version "9.2.0"
+    id("com.android.kotlin.multiplatform.library") version "9.2.1"
     id("com.vanniktech.maven.publish") version "0.36.0"
 }
 
@@ -92,10 +92,10 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.4.0")
             }
         }
@@ -128,14 +128,16 @@ rootProject.extensions.configure<YarnRootExtension>("kotlinYarn") {
     resolution("**/serialize-javascript", "7.0.5")
     resolution("webpack", "5.106.2")
     resolution("**/webpack", "5.106.2")
+    resolution("ws", "8.20.1")
+    resolution("**/ws", "8.20.1")
     resolution("follow-redirects", "1.16.0")
     resolution("**/follow-redirects", "1.16.0")
     resolution("lodash", "4.18.1")
     resolution("**/lodash", "4.18.1")
     resolution("ajv", "8.20.0")
     resolution("**/ajv", "8.20.0")
-    resolution("brace-expansion", "5.0.5")
-    resolution("**/brace-expansion", "5.0.5")
+    resolution("brace-expansion", "5.0.6")
+    resolution("**/brace-expansion", "5.0.6")
     resolution("flatted", "3.4.2")
     resolution("**/flatted", "3.4.2")
     resolution("minimatch", "10.2.5")
