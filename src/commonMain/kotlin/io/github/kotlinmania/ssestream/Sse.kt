@@ -12,6 +12,7 @@ data class Sse(
     var retry: ULong? = null,
 ) {
     fun isEvent(): Boolean = event != null
+
     fun isMessage(): Boolean = event == null
 
     fun event(event: String): Sse {
