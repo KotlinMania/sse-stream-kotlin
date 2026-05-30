@@ -26,8 +26,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v6.1.0
 
       - name: Build and test watchOS targets
-        # watchosArm32 is intentionally omitted — retired by workspace product
-        # policy and not declared in build.gradle.kts (see kmp-watchosarm32-retirement).
         run: >
           ./gradlew
           compileKotlinWatchosArm64
