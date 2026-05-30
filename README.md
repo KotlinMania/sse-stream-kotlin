@@ -76,7 +76,7 @@ let body = SseBody::new(stream);
 
 ```kotlin
 dependencies {
-    implementation("io.github.kotlinmania:sse-stream-kotlin:0.1.0")
+    implementation("io.github.kotlinmania:sse-stream-kotlin:0.1.1")
 }
 ```
 
