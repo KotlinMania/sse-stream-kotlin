@@ -159,12 +159,11 @@ fun installProjectAndroidSdk(execOperations: ExecOperations) {
     println("setup-android-sdk: accepting licenses")
     val licenseAnswers = "y\n".repeat(200).toByteArray(Charsets.UTF_8)
     val licenseResult =
-        execOperations
-            .exec {
-                commandLine(sdkManagerCommand("--sdk_root=${projectAndroidSdkDir.absolutePath}", "--licenses"))
-                standardInput = ByteArrayInputStream(licenseAnswers)
-                isIgnoreExitValue = true
-            }
+        execOperations.exec {
+            commandLine(sdkManagerCommand("--sdk_root=${projectAndroidSdkDir.absolutePath}", "--licenses"))
+            standardInput = ByteArrayInputStream(licenseAnswers)
+            isIgnoreExitValue = true
+        }
     if (licenseResult.exitValue != 0) {
         throw GradleException("Android SDK license acceptance failed with exit code ${licenseResult.exitValue}")
     }
