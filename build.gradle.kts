@@ -744,6 +744,29 @@ tasks.register("hostTests") {
     )
 }
 
+tasks.matching { it.name.endsWith("GenerateSPMPackage") }.configureEach {
+    doLast {
+        val spmPackageDir =
+            layout.buildDirectory
+                .dir("SPMPackage")
+                .get()
+                .asFile
+        if (spmPackageDir.exists()) {
+            spmPackageDir.walkTopDown().filter { it.name == "Package.swift" }.forEach { packageSwift ->
+                val text = packageSwift.readText()
+                if (!text.contains("platforms:")) {
+                    packageSwift.writeText(
+                        text.replaceFirst(
+                            Regex("""(Package\(\s*name:\s*"[^"]*",)"""),
+                            "$1\n    platforms: [.macOS(.v14)],",
+                        ),
+                    )
+                }
+            }
+        }
+    }
+}
+
 // Swift Export smoke test — produces the SPM package via embedSwiftExportForXcode
 // (spawned with the Xcode-style env it requires) and runs `swift test` against it,
 // so Swift Export breakage surfaces locally, not only in the swift.yml CI job.
@@ -762,15 +785,21 @@ tasks.register("swiftExportSmokeTest") {
                 .get()
                 .asFile
         swiftBuildFile.deleteRecursively()
+        swiftBuildFile.mkdirs()
         val swiftBuildDir = swiftBuildFile.absolutePath
+        layout.buildDirectory
+            .dir("bin/macosArm64/SwiftExportBinaryDebugStatic")
+            .get()
+            .asFile
+            .mkdirs()
         execOperations
             .exec {
                 workingDir = projectDir
                 commandLine(
                     "./gradlew",
                     "embedSwiftExportForXcode",
-                    "--rerun-tasks",
                     "--no-configuration-cache",
+                    "--no-daemon",
                     "--console=plain",
                 )
                 environment(
@@ -797,30 +826,18 @@ tasks.register("swiftExportSmokeTest") {
             if (!text.contains("platforms:")) {
                 generatedPackageSwift.writeText(
                     text.replaceFirst(
-                        Regex("(name:\\s*\"[^\"]*\",)"),
-                        "\$1\n    platforms: [.macOS(.v14)],",
+                        Regex("""(Package\(\s*name:\s*"[^"]*",)"""),
+                        "$1\n    platforms: [.macOS(.v14)],",
                     ),
                 )
             }
         }
 
-        val spmPackageDir =
-            layout.buildDirectory
-                .dir("SPMPackage")
-                .get()
-                .asFile
-        if (spmPackageDir.exists()) {
-            val pastTime = 1700000000000L
-            spmPackageDir.walkTopDown().forEach { file ->
-                file.setLastModified(pastTime)
-            }
-        }
-
-        val harnessBuildDir =
-            layout.projectDirectory
-                .dir("swift-test-harness/.build")
-                .asFile
-        harnessBuildDir.deleteRecursively()
+        execOperations
+            .exec {
+                workingDir = layout.projectDirectory.dir("swift-test-harness").asFile
+                commandLine("swift", "package", "reset")
+            }.assertNormalExitValue()
 
         execOperations
             .exec {
