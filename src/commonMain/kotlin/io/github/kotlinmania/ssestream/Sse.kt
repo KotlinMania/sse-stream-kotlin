@@ -1,4 +1,4 @@
-// port-lint: source src/lib.rs
+// port-lint: source lib.rs
 package io.github.kotlinmania.ssestream
 
 import kotlin.time.Duration
@@ -39,6 +39,10 @@ data class Sse(
         this.retry = retry.inWholeMilliseconds.toULong()
         return this
     }
+
+    companion object {
+        fun from(valSse: Sse): ByteArray = valSse.toByteArray()
+    }
 }
 
 // Wire-format encoding of an Sse event into UTF-8 bytes.
@@ -51,3 +55,5 @@ fun Sse.toByteArray(): ByteArray {
     sb.append('\n')
     return sb.toString().encodeToByteArray()
 }
+
+fun from(valSse: Sse): ByteArray = valSse.toByteArray()
