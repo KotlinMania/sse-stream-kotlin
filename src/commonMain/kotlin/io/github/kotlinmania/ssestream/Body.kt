@@ -8,6 +8,7 @@ import kotlin.time.Duration.Companion.seconds
 
 typealias Data = ByteArray
 typealias Output = Unit
+typealias Error = Throwable
 
 interface Timer {
     fun reset(duration: Duration)

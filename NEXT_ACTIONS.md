@@ -6,8 +6,8 @@ Based on AST analysis, here are the concrete next steps.
 
 - **Files Present:** 3/3 (100.0%)
 - **Function parity:** 26/26 matched (target 54) — 100.0%
-- **Class/type parity:** 9/10 matched (target 24) — 90.0%
-- **Combined symbol parity:** 35/36 matched (target 78) — 97.2%
+- **Class/type parity:** 10/10 matched (target 25) — 100.0%
+- **Combined symbol parity:** 36/36 matched (target 79) — 100.0%
 - **Average inline-code cosine:** 0.58 (function body across 3 matched files)
 - **Average documentation cosine:** 0.51 (doc text across 3 matched files)
 - **Cheat-zeroed Files:** 0
@@ -43,11 +43,11 @@ Every matched file is listed below with function and type symbol parity.
 - **Target:** `ssestream.Body`
 - **Similarity:** 0.61
 - **Dependents:** 0
-- **Priority Score:** 11803.9
+- **Priority Score:** 1803.9
 - **Functions:** 12/12 matched (target 20)
 - **Missing functions:** _none_
-- **Types:** 5/6 matched (target 7)
-- **Missing types:** `Error`
+- **Types:** 6/6 matched (target 8)
+- **Missing types:** _none_
 
 ### 3. lib
 
