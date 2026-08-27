@@ -1,4 +1,4 @@
-// port-lint: tests stream.rs
+// port-lint: tests sse-stream/src/stream.rs
 package io.github.kotlinmania.ssestream
 
 import kotlinx.coroutines.flow.asFlow

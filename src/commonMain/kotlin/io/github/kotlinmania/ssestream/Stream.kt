@@ -1,4 +1,4 @@
-// port-lint: source stream.rs
+// port-lint: source sse-stream/src/stream.rs
 package io.github.kotlinmania.ssestream
 
 import kotlinx.coroutines.flow.Flow
