@@ -1,4 +1,4 @@
-// port-lint: tests test_bytes_parse.rs
+// port-lint: tests sse-stream/src/test_bytes_parse.rs
 package io.github.kotlinmania.ssestream
 
 import kotlinx.coroutines.flow.asFlow
