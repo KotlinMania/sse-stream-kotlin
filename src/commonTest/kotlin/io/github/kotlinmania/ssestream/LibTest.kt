@@ -1,4 +1,4 @@
-// port-lint: tests lib.rs
+// port-lint: tests sse-stream/src/lib.rs
 package io.github.kotlinmania.ssestream
 
 import kotlin.test.Test

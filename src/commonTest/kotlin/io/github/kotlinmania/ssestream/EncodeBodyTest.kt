@@ -1,4 +1,4 @@
-// port-lint: tests test_encode_body.rs
+// port-lint: tests sse-stream/src/test_encode_body.rs
 package io.github.kotlinmania.ssestream
 
 import kotlinx.coroutines.flow.asFlow
