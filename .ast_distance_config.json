@@ -2,7 +2,7 @@
   "type": "port",
   "name": "sse-stream-kotlin",
   "source": {
-    "path": "tmp",
+    "path": "tmp/sse-stream/src",
     "lang": "rust"
   },
   "target": {
