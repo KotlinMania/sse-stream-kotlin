@@ -1,4 +1,4 @@
-// port-lint: source sse-stream/src/lib.rs
+// port-lint: source lib.rs
 package io.github.kotlinmania.ssestream
 
 import kotlin.time.Duration
