@@ -1,7 +1,6 @@
 // port-lint: tests stream.rs
 package io.github.kotlinmania.ssestream
 
-import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest

@@ -253,6 +253,7 @@ class SseStream(
                     }
                 }
             }
+
             "event" -> {
                 val eventValue =
                     try {
@@ -271,6 +272,7 @@ class SseStream(
                     }
                 }
             }
+
             "id" -> {
                 val idValue =
                     try {
@@ -289,6 +291,7 @@ class SseStream(
                     }
                 }
             }
+
             "retry" -> {
                 val retryStr =
                     try {
@@ -310,9 +313,11 @@ class SseStream(
                     }
                 }
             }
+
             "" -> {
                 // Comment line, ignored
             }
+
             else -> {
                 return Error.InvalidLine
             }
