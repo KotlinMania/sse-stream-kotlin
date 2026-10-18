@@ -61,8 +61,6 @@ sealed class Error(
         }
 }
 
-typealias SseError = Error
-
 class SseStream(
     private val body: Flow<ByteArray>,
 ) : Flow<Result<Sse>> {
